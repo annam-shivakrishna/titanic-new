@@ -1,4 +1,5 @@
 # -*- coding: utf-8 -*-
+
 """
 Created on Sun Aug  9 18:49:22 2020
 
@@ -26,7 +27,7 @@ p(titanic.head())
 p("\n" + "no. of passengers" ,titanic.shape[0])
 dtypes =  titanic.dtypes
 
-# 
+#
 # Existing columns
 print("No. columns:", titanic.shape[1], "\n")
 p(titanic.columns)
@@ -36,10 +37,10 @@ new_col_names = ['Passenger_ID', 'Survived', 'Class', 'Name', 'Sex', 'Age',
        'Siblings_spouses_aboard', 'Parents_children_aboard', 'Ticket', 'Fare', 'Cabin_num', 'Port_of_Embarkation']
 titanic.columns = new_col_names
 p(titanic.columns)
-                                                                           
-# changing Survived and class and 
+
+# changing Survived and class and
 titanic.Survived = titanic.Survived.map({0:'Died',1:'Survived'})
-titanic.Class = titanic.Class.map({1:'first class',2:'second class',3:'third class'}) 
+titanic.Class = titanic.Class.map({1:'first class',2:'second class',3:'third class'})
 
 # information of nans
 nans = titanic.isnull().sum()
@@ -55,7 +56,7 @@ for x in sex_survived['Survived']       :
     else:
         count = count + 1
         #print("red",count)
-    
+
 countplot0 = sns.countplot(x=titanic.Sex,hue=sex_survived.Survived,palette=['red','green'])
 
 
@@ -104,7 +105,7 @@ plt.show()
 
 outliers_free = titanic[titanic['Fare']<170].reset_index(drop=True)
 
-# ramoving na values 
+# ramoving na values
 outliers_free1 = outliers_free.dropna(axis=0)
 
 dummy1 = pd.get_dummies(outliers_free1['Passenger_ID'],prefix='Passenger_ID',drop_first=True)
